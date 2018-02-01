@@ -9,7 +9,7 @@ import java.util.List;
  */
 @Data
 public class Configuration {
-    private Integer startRowNo; //读取的起始行 起始为0
+    private Integer startRowNumber; //读取的起始行 起始为0
     private ImportFileType importFileType;
     private Integer resultType; //返回数据类型 返回maps 该方法暂时无用
     private List<ImportCell> importCells;

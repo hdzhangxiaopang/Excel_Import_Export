@@ -9,11 +9,8 @@ public class FileImportException extends Exception {
         super(message);
     }
 
-    public FileImportException(String message, Throwable cause) {
-        super(message, cause);
+    public FileImportException(Throwable throwable,String message) {
+        super(message, throwable);
     }
 
-    public FileImportException(Throwable cause) {
-        super(cause);
-    }
 }

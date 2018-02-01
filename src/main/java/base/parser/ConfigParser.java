@@ -1,4 +1,4 @@
-package base.domain;
+package base.parser;
 
 import excel_import.common.Configuration;
 import excel_import.exception.FileImportException;

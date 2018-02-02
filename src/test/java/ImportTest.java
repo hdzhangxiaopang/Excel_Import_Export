@@ -1,5 +1,5 @@
 import base.parser.ConfigParser;
-import base.parser.ConfigurationParserFactory;
+import factory.ConfigurationParserFactory;
 import entity.ImportConfig;
 import entity.MapResult;
 import exception.FileImportException;

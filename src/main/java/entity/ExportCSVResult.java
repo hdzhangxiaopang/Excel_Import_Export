@@ -1,5 +1,6 @@
 package entity;
 
+import base.constants.UtilConstants;
 import entity.ExportResult;
 import entity.ExportType;
 import exception.FileExportException;
@@ -35,7 +36,7 @@ public class ExportCSVResult extends ExportResult{
             outputStream.write(result.getBytes("UTF-8"));
             outputStream.close();
         } catch (IOException e) {
-           throw new FileExportException("Error current while exportCSV msg is"+e);
+           throw new FileExportException(UtilConstants.EXPORT_CSV_FILE_ERROR+e);
         }
     }
 }

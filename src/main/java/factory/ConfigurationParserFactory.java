@@ -1,5 +1,7 @@
-package base.parser;
+package factory;
 
+import base.parser.ConfigParser;
+import base.parser.XmlConfigParser;
 import entity.ImportConfig;
 import exception.FileImportException;
 

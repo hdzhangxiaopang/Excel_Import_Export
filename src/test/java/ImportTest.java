@@ -1,11 +1,9 @@
 import base.parser.ConfigParser;
 import base.parser.ConfigurationParserFactory;
-import excel_import.common.Configuration;
-import excel_import.common.ImportResult;
-import excel_import.common.MapResult;
-import excel_import.exception.FileImportException;
-import excel_import.executor.FileImportExecutor;
-import excel_import.service.FileImport;
+import entity.ImportConfig;
+import entity.MapResult;
+import exception.FileImportException;
+import executor.FileImportExecutor;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -24,10 +22,10 @@ public class ImportTest {
     }
 
     private static void testImport() throws FileImportException, URISyntaxException {
-        ConfigParser configParser = ConfigurationParserFactory.getConfigParser(Configuration.ParserType.XML);
+        ConfigParser configParser = ConfigurationParserFactory.getConfigParser(ImportConfig.ParserType.XML);
         URI uri = ImportTest.class.getResource("import/testImport.xlsx").toURI();
         File importFile = new File(uri);
-        Configuration configuration = null;
+        ImportConfig configuration = null;
         try {
             configuration = configParser.getConfig(ImportTest.class.getResourceAsStream("import/import_config.xml"));
             MapResult mapResult = (MapResult) FileImportExecutor.importFile(configuration, importFile, importFile.getName());

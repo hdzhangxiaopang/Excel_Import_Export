@@ -1,8 +1,8 @@
-import excel_export.FileExport;
-import excel_export.common.ExportConfig;
-import excel_export.common.ExportResult;
-import excel_export.exception.FileExportException;
-import excel_export.service.ExportConfigFactory;
+import entity.FileExport;
+import entity.ExportConfig;
+import entity.ExportResult;
+import exception.FileExportException;
+import factory.ExportConfigFactory;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -22,8 +22,8 @@ public class ExportTest {
     public static void testExport() throws FileExportException, FileNotFoundException {
         ExportConfig exportConfig = ExportConfigFactory.getExportConfig(ExportTest.class.getResourceAsStream("export/export_config.xml"));
         ExportResult exportResult = FileExport.getExportResult(exportConfig, initData());
-       // OutputStream outputStream = new FileOutputStream("C://output.xlsx");
-        OutputStream outputStream = new FileOutputStream("C://output.csv");
+        OutputStream outputStream = new FileOutputStream("C://output.xlsx");
+        //OutputStream outputStream = new FileOutputStream("C://output.csv");
         exportResult.export(outputStream);
     }
     public static List<Map> initData(){

@@ -2,7 +2,7 @@
 <exportFile>
     <fileName>exportConfig</fileName>
     <!--exportType 0:EXCEL_2007,1:CSV-->
-    <exportType>1</exportType>
+    <exportType>0</exportType>
     <!--title导出展示的列title名,alias对应别名，映射的字段名-->
     <cell>
         <title>int</title>

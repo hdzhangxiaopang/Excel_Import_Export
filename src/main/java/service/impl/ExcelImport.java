@@ -1,15 +1,15 @@
-package excel_import.service.impl;
+package service.impl;
 
 import base.constants.UtilConstants;
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import excel_import.common.Configuration;
-import excel_import.common.ImportCell;
-import excel_import.common.ImportResult;
-import excel_import.common.MapResult;
-import excel_import.exception.FileImportException;
-import excel_import.service.FileImport;
+import entity.ImportConfig;
+import entity.ImportCell;
+import entity.ImportResult;
+import entity.MapResult;
+import exception.FileImportException;
+import service.FileImport;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -28,15 +28,15 @@ import java.util.Map;
  */
 public class ExcelImport extends FileImport {
 
-    private Configuration configuration;
+    private ImportConfig importConfig;
 
-    public ExcelImport(Configuration configuration) {
-        this.configuration = configuration;
+    public ExcelImport(ImportConfig importConfig) {
+        this.importConfig = importConfig;
     }
 
     @Override
     public ImportResult getImportResult(File file, String fileName) throws FileImportException {
-        if (configuration == null) {
+        if (importConfig == null) {
             throw new FileImportException(UtilConstants.IMPORT_CONFIGURATION_ISNULL);
         }
         StringBuilder builder = new StringBuilder();
@@ -57,17 +57,17 @@ public class ExcelImport extends FileImport {
         } else {
             throw new FileImportException(UtilConstants.IMPORT_UNSUPPORT_FILE_STYLE);
         }
-        List<Map> result = readExcel(workbook, configuration, builder);
+        List<Map> result = readExcel(workbook, importConfig, builder);
         MapResult mapResult = new MapResult();
         mapResult.setResult(result);
         mapResult.setResMsg(builder.toString());
         return mapResult;
     }
 
-    private List<Map> readExcel(Workbook workbook, Configuration configuration, StringBuilder builder) {
+    private List<Map> readExcel(Workbook workbook, ImportConfig importConfig, StringBuilder builder) {
         Sheet sheet = workbook.getSheetAt(0);
-        int startRowNumber = configuration.getStartRowNumber();
-        List<ImportCell> importCells = configuration.getImportCells();
+        int startRowNumber = importConfig.getStartRowNumber();
+        List<ImportCell> importCells = importConfig.getImportCells();
         int phyRows = sheet.getPhysicalNumberOfRows();
         List<Map> results = Lists.newLinkedList();
         for (int i = startRowNumber; i < phyRows; i++) {

@@ -1,8 +1,8 @@
 package base.parser;
 import base.constants.UtilConstants;
-import excel_import.common.Configuration;
-import excel_import.common.ImportCell;
-import excel_import.exception.FileImportException;
+import entity.ImportConfig;
+import entity.ImportCell;
+import exception.FileImportException;
 import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -70,7 +70,7 @@ public class XmlConfigParser extends ConfigParser {
     }
 
     @Override
-    public Configuration getConfig(InputStream configStream) throws FileImportException {
+    public ImportConfig getConfig(InputStream configStream) throws FileImportException {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = null;
         Document document = null;
@@ -81,7 +81,7 @@ public class XmlConfigParser extends ConfigParser {
             throw new FileImportException(e,UtilConstants.IMPORT_XML_PARSER_ERROR);
         }
         document.getDocumentElement().normalize();
-        Configuration configuration = new Configuration();
+        ImportConfig configuration = new ImportConfig();
 
         Element root = document.getDocumentElement();
         NodeList nList = document.getElementsByTagName("cell");
@@ -93,7 +93,7 @@ public class XmlConfigParser extends ConfigParser {
         }
         configuration.setStartRowNumber(Integer.valueOf(startRowNoText));
         configuration.setImportCells(importCells);
-        configuration.setImportFileType(Configuration.ImportFileType.EXCEL);
+        configuration.setImportFileType(ImportConfig.ImportFileType.EXCEL);
 
         return configuration;
     }

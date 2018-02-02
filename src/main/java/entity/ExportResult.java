@@ -1,6 +1,6 @@
-package excel_export.common;
+package entity;
 
-import excel_export.exception.FileExportException;
+import exception.FileExportException;
 import lombok.Data;
 
 import java.io.OutputStream;

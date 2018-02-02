@@ -1,13 +1,13 @@
-package excel_export;
+package entity;
 
-import excel_export.common.ExportConfig;
-import excel_export.common.ExportResult;
-import excel_export.common.ExportType;
-import excel_export.excel.ExportCSVResult;
-import excel_export.excel.ExportExcelResult;
-import excel_export.exception.FileExportException;
-import excel_export.service.impl.CSVExport;
-import excel_export.service.impl.ExcelExport;
+import entity.ExportConfig;
+import entity.ExportResult;
+import entity.ExportType;
+import entity.ExportCSVResult;
+import entity.ExportExcelResult;
+import exception.FileExportException;
+import service.impl.CSVExport;
+import service.impl.ExcelExport;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import java.util.List;

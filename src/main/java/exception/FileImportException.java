@@ -1,4 +1,4 @@
-package excel_import.exception;
+package exception;
 
 /**
  * Created by zhangguilin on 2/1/2018.

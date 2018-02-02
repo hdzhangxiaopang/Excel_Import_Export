@@ -1,8 +1,8 @@
-package excel_export.excel;
+package entity;
 
-import excel_export.common.ExportResult;
-import excel_export.common.ExportType;
-import excel_export.exception.FileExportException;
+import entity.ExportResult;
+import entity.ExportType;
+import exception.FileExportException;
 import lombok.Data;
 import org.apache.poi.ss.usermodel.Workbook;
 

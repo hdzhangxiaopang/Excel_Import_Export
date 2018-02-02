@@ -1,7 +1,7 @@
-package excel_import.service;
+package service;
 
-import excel_import.common.ImportResult;
-import excel_import.exception.FileImportException;
+import entity.ImportResult;
+import exception.FileImportException;
 
 import java.io.File;
 

@@ -21,15 +21,15 @@ public class BaseModel {
      * 改进：利用ToStringBuilder的子类ReflectionToStringBuilder，覆盖其accept方法进行筛选。
      *
      * */
-    @Override
+   /* @Override
     public String toString(){
-       /* return(new ReflectionToStringBuilder(this){
+        return(new ReflectionToStringBuilder(this){
             protected boolean accept(Field field){
                 return super.accept(field) && !field.getName().equals("password");
             }
-        }).toString();*/
-        return ToStringBuilder.reflectionToString(this);
-    }
+        }).toString();
+        //return ToStringBuilder.reflectionToString(this);
+    }*/
 
     /**
      * 如果hashCode取决于该class的所有field时需要使用反射机制产生一个hashCode

@@ -1,6 +1,4 @@
-package excel_import.common;
-
-import lombok.Data;
+package entity;
 
 import java.util.List;
 

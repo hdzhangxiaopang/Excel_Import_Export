@@ -1,7 +1,7 @@
 package base.parser;
 
-import excel_import.common.Configuration;
-import excel_import.exception.FileImportException;
+import entity.ImportConfig;
+import exception.FileImportException;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -12,7 +12,7 @@ import java.io.InputStream;
  */
 public abstract class ConfigParser {
 
-    abstract public Configuration getConfig(InputStream inputStream) throws FileImportException;
+    abstract public ImportConfig getConfig(InputStream inputStream) throws FileImportException;
 
     public static String getNodeText(Element element,String key) throws FileImportException{
         NodeList nodeList = element.getElementsByTagName(key);

@@ -1,4 +1,4 @@
-package excel_import.common;
+package entity;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

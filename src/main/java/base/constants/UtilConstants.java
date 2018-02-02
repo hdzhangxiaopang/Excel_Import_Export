@@ -5,7 +5,11 @@ package base.constants;
  */
 public class UtilConstants {
 
-    public static final String EXPORT_CSV_FILE_ERROR = "public static Object EXPORT_CSV_FILE_ERROR";
+    public static final String LABEL_ISEMPTY = "Tag is Empty. tag:";
+
+    public static final String EXPORT_CSV_FILE_ERROR = "Error occurred while export csv msg is ";
+
+    public static final String EXPORT_EXCEL_FILE_ERROR = "Error occurred while export excel msg is ";
 
     /**
      * 导入部分异常常量

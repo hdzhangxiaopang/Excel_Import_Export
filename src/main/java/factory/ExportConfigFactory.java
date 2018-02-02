@@ -4,7 +4,7 @@ import base.constants.UtilConstants;
 import base.parser.ConfigParser;
 import entity.ExportCell;
 import entity.ExportConfig;
-import entity.ExportLabel;
+import entity.ExportTag;
 import entity.ExportType;
 import exception.FileExportException;
 import exception.FileImportException;
@@ -42,14 +42,14 @@ public class ExportConfigFactory {
            throw new FileExportException(e,UtilConstants.EXPORT_XML_PARSER_ERROR);
         }
         Element element = document.getDocumentElement();
-        NodeList elements = element.getElementsByTagName(ExportLabel.CELL);
+        NodeList elements = element.getElementsByTagName(ExportTag.CELL);
         List<ExportCell> exportCells = initElement(elements);
 
         String fileName = "";
         String fileType = "";
         try {
-            fileName = ConfigParser.getNodeText(element, ExportLabel.FILENAME);
-            fileType = ConfigParser.getNodeText(element, ExportLabel.EXPORTTYPE);
+            fileName = ConfigParser.getNodeText(element, ExportTag.FILENAME);
+            fileType = ConfigParser.getNodeText(element, ExportTag.EXPORTTYPE);
         } catch (FileImportException e) {
             e.printStackTrace();
         }
@@ -77,8 +77,8 @@ public class ExportConfigFactory {
             String titleText = "";
             String aliasText = "";
             try {
-                titleText = ConfigParser.getNodeText(item, ExportLabel.TITLE);
-                aliasText = ConfigParser.getNodeText(item, ExportLabel.ALIAS);
+                titleText = ConfigParser.getNodeText(item, ExportTag.TITLE);
+                aliasText = ConfigParser.getNodeText(item, ExportTag.ALIAS);
             } catch (FileImportException e) {
                 throw new FileExportException(e);
             }

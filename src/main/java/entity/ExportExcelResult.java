@@ -1,5 +1,6 @@
 package entity;
 
+import base.constants.UtilConstants;
 import entity.ExportResult;
 import entity.ExportType;
 import exception.FileExportException;
@@ -28,7 +29,7 @@ public class ExportExcelResult extends ExportResult{
             workbook.write(outputStream);
             outputStream.close();
         } catch (IOException e) {
-            throw new FileExportException("Error occurred while export excel msg is " + e);
+            throw new FileExportException(UtilConstants.EXPORT_EXCEL_FILE_ERROR + e);
         }
     }
 

@@ -1,11 +1,7 @@
-package base.domain;
+package base.entity;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import java.lang.reflect.Field;
 
 /**
  * Created by zhangguilin on 1/31/2018.

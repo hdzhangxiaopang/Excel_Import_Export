@@ -1,6 +1,7 @@
 package service.impl;
 
 import base.util.DateUtil;
+import base.util.EmptyUtil;
 import base.util.ReflectionUtils;
 import entity.ExportCell;
 import exception.FileExportException;
@@ -84,7 +85,7 @@ public class CSVExport implements FileExport {
      * 设置值
      * */
     private void setValue(Object obj, StringBuilder stringBuilder) throws FileExportException {
-        if (obj != null) {
+        if (EmptyUtil.isNotEmpty(obj)) {
             BigDecimal bigDecimal = null;
             String classType = obj.getClass().getName();
             if (classType.endsWith("String"))

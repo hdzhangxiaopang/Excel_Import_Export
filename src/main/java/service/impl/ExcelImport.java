@@ -1,6 +1,7 @@
 package service.impl;
 
 import base.constants.UtilConstants;
+import base.util.EmptyUtil;
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -36,7 +37,7 @@ public class ExcelImport extends FileImport {
 
     @Override
     public ImportResult getImportResult(File file, String fileName) throws FileImportException {
-        if (importConfig == null) {
+        if (EmptyUtil.isNotEmpty(importConfig)) {
             throw new FileImportException(UtilConstants.IMPORT_CONFIGURATION_ISNULL);
         }
         StringBuilder builder = new StringBuilder();
@@ -72,7 +73,7 @@ public class ExcelImport extends FileImport {
         List<Map> results = Lists.newLinkedList();
         for (int i = startRowNumber; i < phyRows; i++) {
             Row row = sheet.getRow(i);
-            if (row == null) {
+            if (EmptyUtil.isEmpty(row)) {
                 continue;
             }
             /**
@@ -103,10 +104,10 @@ public class ExcelImport extends FileImport {
         String key = importCell.getKey();
         Cell cell = row.getCell(num);
         int rawCellType = Cell.CELL_TYPE_BLANK;
-        if (cell != null) {
+        if (EmptyUtil.isNotEmpty(cell)) {
             rawCellType = cell.getCellType();
         }
-        if (cell == null || rawCellType == Cell.CELL_TYPE_BLANK || (rawCellType == Cell.CELL_TYPE_STRING && StringUtils.isEmpty(cell.getStringCellValue()))) {
+        if (EmptyUtil.isEmpty(cell)|| rawCellType == Cell.CELL_TYPE_BLANK || (rawCellType == Cell.CELL_TYPE_STRING && StringUtils.isEmpty(cell.getStringCellValue()))) {
             if (nullAble == ImportCell.NullAble.NUll_ALLOWED) {
                 maps.put(key, Optional.absent());
             } else {
@@ -194,7 +195,7 @@ public class ExcelImport extends FileImport {
     }
 
     private boolean isCellEmpty(Cell cell) {
-        if (cell == null) {
+        if (EmptyUtil.isEmpty(cell)) {
             return true;
         }
         if (cell.getCellType() == Cell.CELL_TYPE_BLANK) {

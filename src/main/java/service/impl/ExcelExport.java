@@ -1,5 +1,6 @@
 package service.impl;
 
+import base.util.EmptyUtil;
 import base.util.ReflectionUtils;
 import entity.ExportCell;
 import exception.FileExportException;
@@ -92,7 +93,7 @@ public class ExcelExport implements FileExport {
      * 填充数据
      * */
     private static void setCellValue(Object obj, Cell cell) throws FileExportException {
-        if (obj!=null) {
+        if (EmptyUtil.isNotEmpty(obj)) {
             BigDecimal bigDecimal = null;
             String classType = obj.getClass().getName();
             if (classType.endsWith("String")) {

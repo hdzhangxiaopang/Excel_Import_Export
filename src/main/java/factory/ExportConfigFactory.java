@@ -2,6 +2,7 @@ package factory;
 
 import base.constants.UtilConstants;
 import base.parser.ConfigParser;
+import base.util.EmptyUtil;
 import entity.ExportCell;
 import entity.ExportConfig;
 import entity.ExportTag;
@@ -61,7 +62,7 @@ public class ExportConfigFactory {
         }
         exportConfig.setFileName(fileName);
         ExportType exportType = ExportType.getExportType(Integer.valueOf(fileType));
-        if(exportType == null){
+        if(EmptyUtil.isEmpty(exportType)){
             throw new FileExportException(UtilConstants.EXPORT_FILE_TYPE_NOTFOUND);
         }
         exportConfig.setExportType(exportType);

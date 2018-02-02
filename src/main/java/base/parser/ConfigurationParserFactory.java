@@ -8,11 +8,11 @@ import excel_import.exception.FileImportException;
  * Created by zhangguilin on 2/1/2018.
  */
 public class ConfigurationParserFactory {
-    public static ConfigParser getConfigParser(Configuration.PasreType parseType) throws FileImportException{
-        if(EmptyUtil.isNotEmpty(parseType)){
-            throw new FileImportException("parseType is null");
+    public static ConfigParser getConfigParser(Configuration.ParserType parserType) throws FileImportException{
+        if(parserType == null){
+            throw new FileImportException("parserType is null");
         }
-        if(parseType == Configuration.PasreType.XML){
+        if(parserType == Configuration.ParserType.XML){
             return new XmlConfigParser();
         }
         return new XmlConfigParser();

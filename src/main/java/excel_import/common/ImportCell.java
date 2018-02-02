@@ -66,17 +66,17 @@ public class ImportCell {
 
         public static CellType getCellType(String str){
             switch (str){
-                case "int":
+                case "Int":
                     return INT;
-                case "float":
+                case "Float":
                     return FLOAT;
-                case "string":
+                case "String":
                     return STRING;
-                case "date":
+                case "Date":
                     return DATE;
-                case "bigdecimal":
+                case "BigDecimal":
                     return BIGDECIMAL;
-                case "double":
+                case "Double":
                     return DOUBLE;
                 default:
                     return STRING;

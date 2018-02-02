@@ -22,4 +22,6 @@ public class UtilConstants {
     public static final String IMPORT_CONFIGURATION_ISNULL = "configuration is null";
 
     public static final String IMPORT_UNSUPPORT_FILE_STYLE = "unsupport file style";
+
+    public static final String IMPORT_FILE_TYPE_ERROR = "Please check importFileType in configuration";
 }

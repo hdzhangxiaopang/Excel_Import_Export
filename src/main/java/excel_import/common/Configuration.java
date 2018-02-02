@@ -14,7 +14,7 @@ public class Configuration {
     private Integer resultType; //返回数据类型 返回maps 该方法暂时无用
     private List<ImportCell> importCells;
 
-    public enum PasreType{
+    public enum ParserType{
         XML
     }
     public enum ImportFileType{

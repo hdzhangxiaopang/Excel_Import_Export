@@ -37,7 +37,7 @@ public class ExcelImport extends FileImport {
 
     @Override
     public ImportResult getImportResult(File file, String fileName) throws FileImportException {
-        if (EmptyUtil.isNotEmpty(importConfig)) {
+        if (EmptyUtil.isEmpty(importConfig)) {
             throw new FileImportException(UtilConstants.IMPORT_CONFIGURATION_ISNULL);
         }
         StringBuilder builder = new StringBuilder();

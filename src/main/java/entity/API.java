@@ -13,11 +13,11 @@ public class API {
     private String DESCRIPTION;
     private String METHOD;
     private String PATH;
-    private String SCHEME;
-    private String SECURITY_SCHEME;
-    private String STATE;
-    private String LIMIT_COUNT;
-    private String LIMIT_TIME;
+    private Integer SCHEME;
+    private Integer SECURITY_SCHEME;
+    private Integer STATE;
+    private Integer LIMIT_COUNT;
+    private Integer LIMIT_TIME;
     private String LIMIT_UNIT;
-    private String IS_DELETE;
+    private Integer IS_DELETE;
 }

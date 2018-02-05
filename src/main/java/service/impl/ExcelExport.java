@@ -33,7 +33,7 @@ public class ExcelExport implements FileExport {
             if (CollectionUtils.isNotEmpty(data)) {
                 if (data.get(0) instanceof Map) {
                     createContentRowsByMap(workbook, (List<Map>) data, exportCells, sheet);
-                } else if (data.get(0) instanceof List) {
+                } else if (data.get(0) instanceof Object) {
                     createContentRowsByBean(workbook, (List<Object>) data, exportCells, sheet);
                 }
             }
@@ -57,11 +57,13 @@ public class ExcelExport implements FileExport {
                     ExportCell exportCell = exportCells.get(colNum);
                     Object obj = null;
                     try {
-                        ReflectionUtils.excuteMethod(o, ReflectionUtils.returnGetMethodName(exportCell.getAlias()));
+                        obj = ReflectionUtils.excuteMethod(o, ReflectionUtils.returnGetMethodName(exportCell.getAlias()));
                     } catch (Exception e) {
                         throw new FileExportException("执行executeMethod  出错 Alias is " + exportCell.getAlias() + " at " + e.getMessage());
                     }
+                    setCellValue(obj,cell);
                 }
+                ++rowNum;
             }
         }
     }

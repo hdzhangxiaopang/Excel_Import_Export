@@ -1,5 +1,6 @@
 package entity;
 
+import base.constants.UtilConstants;
 import entity.ExportConfig;
 import entity.ExportResult;
 import entity.ExportType;
@@ -38,7 +39,7 @@ public class FileExport {
                 return exportCSVResult;
 
         }
-        throw new FileExportException("找不到对应的export type, export type is " + exportType.getNumber());
+        throw new FileExportException(UtilConstants.EXPORT_FILE_TYPE_NOTFOUND + exportType.getNumber());
 
     }
 }

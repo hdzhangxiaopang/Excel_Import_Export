@@ -20,10 +20,10 @@ public class FileExport {
 
     /**
      * 通过List<T> T可为bean或者Map<String,Object> 导出文件
-     * */
-    public static ExportResult getExportResult(ExportConfig exportConfig, List<?> data) throws FileExportException{
+     */
+    public static ExportResult getExportResult(ExportConfig exportConfig, List<?> data) throws FileExportException {
         ExportType exportType = exportConfig.getExportType();
-        switch (exportType){
+        switch (exportType) {
             case EXCEL_2007:
                 Workbook workbook = new ExcelExport().getExportResult(data, exportConfig.getExportCells());
                 ExportExcelResult exportExcelResult = new ExportExcelResult();

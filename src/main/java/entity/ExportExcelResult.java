@@ -14,7 +14,7 @@ import java.io.OutputStream;
  * Created by zhangguilin on 1/31/2018.
  */
 @Data
-public class ExportExcelResult extends ExportResult{
+public class ExportExcelResult extends ExportResult {
 
     private Workbook workbook;
 

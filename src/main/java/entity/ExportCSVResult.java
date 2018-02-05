@@ -11,7 +11,7 @@ import java.io.OutputStream;
 /**
  * Created by zhangguilin on 1/31/2018.
  */
-public class ExportCSVResult extends ExportResult{
+public class ExportCSVResult extends ExportResult {
 
     private String result;
 
@@ -36,7 +36,7 @@ public class ExportCSVResult extends ExportResult{
             outputStream.write(result.getBytes("UTF-8"));
             outputStream.close();
         } catch (IOException e) {
-           throw new FileExportException(UtilConstants.EXPORT_CSV_FILE_ERROR+e);
+            throw new FileExportException(UtilConstants.EXPORT_CSV_FILE_ERROR + e);
         }
     }
 }

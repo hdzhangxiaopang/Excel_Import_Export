@@ -27,7 +27,7 @@ import java.util.List;
  * Created by zhangguilin on 1/31/2018.
  */
 public class ExportConfigFactory {
-    public static ExportConfig getExportConfig(InputStream inputStream) throws FileExportException{
+    public static ExportConfig getExportConfig(InputStream inputStream) throws FileExportException {
         return getExportCells(inputStream);
     }
 
@@ -40,7 +40,7 @@ public class ExportConfigFactory {
             dBuilder = dbFactory.newDocumentBuilder();
             document = dBuilder.parse(inputStream);
         } catch (ParserConfigurationException | SAXException | IOException e) {
-           throw new FileExportException(e,UtilConstants.EXPORT_XML_PARSER_ERROR);
+            throw new FileExportException(e, UtilConstants.EXPORT_XML_PARSER_ERROR);
         }
         Element element = document.getDocumentElement();
         NodeList elements = element.getElementsByTagName(ExportTag.CELL);
@@ -54,15 +54,15 @@ public class ExportConfigFactory {
         } catch (FileImportException e) {
             e.printStackTrace();
         }
-        if(StringUtils.isEmpty(fileName)){
+        if (StringUtils.isEmpty(fileName)) {
             throw new FileExportException(UtilConstants.EXPORT_FILE_NAME_ISEMPTY);
         }
-        if(StringUtils.isEmpty(fileType)||!StringUtils.isNumeric(fileType)){
+        if (StringUtils.isEmpty(fileType) || !StringUtils.isNumeric(fileType)) {
             throw new FileExportException(UtilConstants.EXPORT_FILE_TYPE_ISEMPTY);
         }
         exportConfig.setFileName(fileName);
         ExportType exportType = ExportType.getExportType(Integer.valueOf(fileType));
-        if(EmptyUtil.isEmpty(exportType)){
+        if (EmptyUtil.isEmpty(exportType)) {
             throw new FileExportException(UtilConstants.EXPORT_FILE_TYPE_NOTFOUND);
         }
         exportConfig.setExportType(exportType);
@@ -72,7 +72,7 @@ public class ExportConfigFactory {
 
     private static List<ExportCell> initElement(NodeList elements) throws FileExportException {
         ArrayList<ExportCell> exportCells = new ArrayList<>(elements.getLength());
-        for(int i = 0; i < elements.getLength(); i++){
+        for (int i = 0; i < elements.getLength(); i++) {
             ExportCell exportCell = new ExportCell();
             Element item = (Element) elements.item(i);
             String titleText = "";
@@ -83,17 +83,17 @@ public class ExportConfigFactory {
             } catch (FileImportException e) {
                 throw new FileExportException(e);
             }
-            if(StringUtils.isEmpty(titleText)){
+            if (StringUtils.isEmpty(titleText)) {
                 throw new FileExportException(UtilConstants.EXPORT_XML_TITLE_ISEMPTY);
             }
             exportCell.setTitle(titleText);
-            if(StringUtils.isEmpty(aliasText)){
+            if (StringUtils.isEmpty(aliasText)) {
                 throw new FileExportException(UtilConstants.EXPORT_XML_ALIAS_ISEMPTY);
             }
             exportCell.setAlias(aliasText);
             exportCells.add(exportCell);
         }
-        if(exportCells.isEmpty()){
+        if (exportCells.isEmpty()) {
             throw new FileExportException(UtilConstants.EXPORT_XML_FILE_CONTENT_ISEMPTY);
         }
         return exportCells;

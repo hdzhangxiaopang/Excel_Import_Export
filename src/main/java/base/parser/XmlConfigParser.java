@@ -27,7 +27,7 @@ public class XmlConfigParser extends ConfigParser {
 
     /**
      * 初始化单元格
-     * */
+     */
     private static List<ImportCell> initElemet(NodeList elements) throws FileImportException {
 
         ArrayList<ImportCell> importCells = new ArrayList<>(elements.getLength());
@@ -66,7 +66,7 @@ public class XmlConfigParser extends ConfigParser {
 
     /**
      * 获取模板对应列类型
-     * */
+     */
     private static ImportCell.CellType getCellType(String cellType) throws FileImportException {
         if (StringUtils.isEmpty(cellType)) {
             throw new FileImportException(UtilConstants.IMPORT_XML_CELL_TYPE_ISEMPTY);
@@ -80,7 +80,7 @@ public class XmlConfigParser extends ConfigParser {
 
     /**
      * 初始化导入数据模板--> import_config.xml
-     * */
+     */
     @Override
     public ImportConfig getConfig(InputStream configStream) throws FileImportException {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

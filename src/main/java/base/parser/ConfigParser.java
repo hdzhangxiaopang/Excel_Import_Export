@@ -17,11 +17,11 @@ public abstract class ConfigParser {
 
     /**
      * 根据标签名称获取标签值
-     * */
-    public static String getNodeText(Element element,String key) throws FileImportException{
+     */
+    public static String getNodeText(Element element, String key) throws FileImportException {
         NodeList nodeList = element.getElementsByTagName(key);
-        if(nodeList.getLength()==0){
-            throw new FileImportException(UtilConstants.LABEL_ISEMPTY+key);
+        if (nodeList.getLength() == 0) {
+            throw new FileImportException(UtilConstants.LABEL_ISEMPTY + key);
         }
         return nodeList.item(0).getTextContent();
 

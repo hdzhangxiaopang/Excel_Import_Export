@@ -28,8 +28,8 @@ public class Import_Api {
             importConfig = configParser.getConfig(ImportTest.class.getResourceAsStream("/import/import_api.xml"));
             MapResult mapResult = (MapResult) FileImportExecutor.importFile(importConfig, importFile, importFile.getName());
             List<Map> maps = mapResult.getResult();
-            for (Map<String,Object> map : maps){
-                String id  = (String) map.get("ID");
+            for (Map<String, Object> map : maps) {
+                String id = (String) map.get("ID");
                 String backend_system_id = (String) map.get("BACKEND_SYSTEM_ID");
                 String name = (String) map.get("NAME");
                 String description = (String) map.get("DESCRIPTION");
@@ -42,9 +42,9 @@ public class Import_Api {
                 int limit_time = (int) map.get("LIMIT_TIME");
                 String limit_unit = (String) map.get("LIMIT_UNIT");
                 int is_delete = (int) map.get("IS_DELETE");
-                System.out.println("ID: "+id+", BACKEND_SYSTEM_ID: "+backend_system_id+", NAME: "+name+", DESCRIPTION: "+description+
-                        ", METHOD: "+method+", PATH: "+path + ", SCHEME: " + scheme+", SECURITY_SCHEME: "+security_scheme+", STATE"+state+
-                        ",LIMIT_COUNT: "+ limit_count + ", LIMIT_TIME: "+limit_time+", LIMIT_UNIT: "+limit_unit+", IS_DELETE: "+is_delete);
+                System.out.println("ID: " + id + ", BACKEND_SYSTEM_ID: " + backend_system_id + ", NAME: " + name + ", DESCRIPTION: " + description +
+                        ", METHOD: " + method + ", PATH: " + path + ", SCHEME: " + scheme + ", SECURITY_SCHEME: " + security_scheme + ", STATE" + state +
+                        ",LIMIT_COUNT: " + limit_count + ", LIMIT_TIME: " + limit_time + ", LIMIT_UNIT: " + limit_unit + ", IS_DELETE: " + is_delete);
             }
         } catch (FileImportException e) {
             e.printStackTrace();

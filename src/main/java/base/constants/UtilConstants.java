@@ -7,13 +7,15 @@ public class UtilConstants {
 
     public static final String LABEL_ISEMPTY = "Tag is Empty. tag:";
 
+    public static final String PARSER_TYPE_ISEMPTY = "parserType is null";
+
     public static final String EXPORT_CSV_FILE_ERROR = "Error occurred while export csv msg is ";
 
     public static final String EXPORT_EXCEL_FILE_ERROR = "Error occurred while export excel msg is ";
 
     /**
      * 导入部分异常常量
-     * */
+     */
     public static final String IMPORT_XML_NUMBER_ISEMPTY = "用于导入的xml文档<number>为空或者非数字";
 
     public static final String IMPORT_XML_KEY_ISEMPTY = "用于导入的xml文档<key>为空";
@@ -36,7 +38,7 @@ public class UtilConstants {
 
     /**
      * 导出部分异常常量
-     * */
+     */
     public static final String EXPORT_FILE_NAME_ISEMPTY = "用于导出的xml<fileName>为空";
 
     public static final String EXPORT_FILE_TYPE_ISEMPTY = "用于导出的xml文档<exportType>为空";

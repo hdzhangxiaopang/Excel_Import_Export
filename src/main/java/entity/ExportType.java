@@ -10,16 +10,16 @@ import lombok.Getter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public enum ExportType {
-    EXCEL_2007(0,"xlsx","application/vnd.ms-excel"),
-    CSV(1,"csv","application/csv");
+    EXCEL_2007(0, "xlsx", "application/vnd.ms-excel"),
+    CSV(1, "csv", "application/csv");
 
     private final int number;
     private final String fileType;
     private final String contentType;
 
-    public static ExportType getExportType(int number){
-        for (ExportType exportType : ExportType.values()){
-            if(exportType.getNumber() == number){
+    public static ExportType getExportType(int number) {
+        for (ExportType exportType : ExportType.values()) {
+            if (exportType.getNumber() == number) {
                 return exportType;
             }
         }

@@ -14,10 +14,11 @@ public class ImportConfig {
     private Integer resultType; //返回数据类型 返回maps 该方法暂时无用
     private List<ImportCell> importCells;
 
-    public enum ParserType{
+    public enum ParserType {
         XML
     }
-    public enum ImportFileType{
+
+    public enum ImportFileType {
         EXCEL
     }
 }

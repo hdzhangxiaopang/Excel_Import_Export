@@ -9,6 +9,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import service.FileExport;
+
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,16 +25,16 @@ public class ExcelExport implements FileExport {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet();
         Row titleRow = sheet.createRow(0);
-        createTitleRow(workbook,titleRow,exportCells,sheet);
+        createTitleRow(workbook, titleRow, exportCells, sheet);
         /**
          * 判断data.getClass() 是不是 List.class.isAssignableFrom的子类或子接口
          * */
-        if(List.class.isAssignableFrom(data.getClass())){
-            if(CollectionUtils.isNotEmpty(data)){
-                if(data.get(0) instanceof Map){
-                    createContentRowsByMap(workbook,(List<Map>) data,exportCells,sheet);
-                }else if(data.get(0) instanceof List){
-                    createContentRowsByBean(workbook,(List<Object>) data,exportCells,sheet);
+        if (List.class.isAssignableFrom(data.getClass())) {
+            if (CollectionUtils.isNotEmpty(data)) {
+                if (data.get(0) instanceof Map) {
+                    createContentRowsByMap(workbook, (List<Map>) data, exportCells, sheet);
+                } else if (data.get(0) instanceof List) {
+                    createContentRowsByBean(workbook, (List<Object>) data, exportCells, sheet);
                 }
             }
         }
@@ -42,21 +43,21 @@ public class ExcelExport implements FileExport {
 
     /**
      * 解析List数据
-     * */
+     */
     private void createContentRowsByBean(Workbook workbook, List<Object> dataList, List<ExportCell> exportCells, Sheet sheet) throws FileExportException {
         int rowNum = 1;
-        if(CollectionUtils.isNotEmpty(dataList)){
+        if (CollectionUtils.isNotEmpty(dataList)) {
             CellStyle cellStyle = createCellStyle(workbook);
-            for(Object o : dataList){
+            for (Object o : dataList) {
                 Row row = sheet.createRow(rowNum);
                 row.setHeightInPoints(23.0F);
-                for(int colNum = 0;colNum<exportCells.size();colNum++){
+                for (int colNum = 0; colNum < exportCells.size(); colNum++) {
                     Cell cell = row.createCell(colNum);
                     cell.setCellStyle(cellStyle);
                     ExportCell exportCell = exportCells.get(colNum);
                     Object obj = null;
                     try {
-                        ReflectionUtils.excuteMethod(o,ReflectionUtils.returnGetMethodName(exportCell.getAlias()));
+                        ReflectionUtils.excuteMethod(o, ReflectionUtils.returnGetMethodName(exportCell.getAlias()));
                     } catch (Exception e) {
                         throw new FileExportException("执行executeMethod  出错 Alias is " + exportCell.getAlias() + " at " + e.getMessage());
                     }
@@ -91,7 +92,7 @@ public class ExcelExport implements FileExport {
 
     /**
      * 填充数据
-     * */
+     */
     private static void setCellValue(Object obj, Cell cell) throws FileExportException {
         if (EmptyUtil.isNotEmpty(obj)) {
             BigDecimal bigDecimal = null;
@@ -128,17 +129,17 @@ public class ExcelExport implements FileExport {
 
     /**
      * 设置标题行
-     * */
+     */
     private void createTitleRow(Workbook workbook, Row titleRow, List<ExportCell> exportCells, Sheet sheet) {
         CellStyle cellStyle = createCellStyle(workbook);
         titleRow.setHeightInPoints(25.0F);
         Font font = workbook.createFont();
-        font.setColor((short)12);
+        font.setColor((short) 12);
         cellStyle.setFont(font);
-        cellStyle.setFillBackgroundColor((short)13);
+        cellStyle.setFillBackgroundColor((short) 13);
         int i = 0;
-        for(ExportCell exportCell : exportCells){
-            sheet.setColumnWidth(i,3200);
+        for (ExportCell exportCell : exportCells) {
+            sheet.setColumnWidth(i, 3200);
             Cell cell = titleRow.createCell(i);
             cell.setCellValue(exportCell.getTitle());
             cell.setCellStyle(cellStyle);

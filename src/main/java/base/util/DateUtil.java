@@ -10,7 +10,7 @@ public class DateUtil {
 
     public static final String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
 
-    public static String dataToString(Date date,String dateFormat){
+    public static String dataToString(Date date, String dateFormat) {
         SimpleDateFormat format = new SimpleDateFormat(dateFormat);
         return format.format(date);
     }

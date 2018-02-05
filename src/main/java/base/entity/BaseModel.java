@@ -29,17 +29,17 @@ public class BaseModel {
 
     /**
      * 如果hashCode取决于该class的所有field时需要使用反射机制产生一个hashCode
-     * */
+     */
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
 
     /**
      * 如果两个对象相等当且仅当每个属性值都相等
-     * */
+     */
     @Override
-    public boolean equals(Object obj){
-        return EqualsBuilder.reflectionEquals(this,obj);
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 }

@@ -16,13 +16,13 @@ public class ImportCell {
     private NullAble nullAble; //是否允许为空 0:允许 ,1:不允许
 
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
-    public enum NullAble{
+    public enum NullAble {
         NUll_ALLOWED(0),
         NULL_NOT_ALLOWED(1);
         private final int val;
 
-        public static NullAble getNullAble(int val){
-            switch (val){
+        public static NullAble getNullAble(int val) {
+            switch (val) {
                 case 0:
                     return NUll_ALLOWED;
                 case 1:
@@ -34,19 +34,19 @@ public class ImportCell {
     }
 
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
-    public enum CellType{
-        INT(0,"int"),
-        FLOAT(1,"float"),
-        STRING(2,"string"),
-        DATE(3,"date"),
-        BIGDECIMAL(4,"bigdecimal"),
-        DOUBLE(5,"double");
+    public enum CellType {
+        INT(0, "int"),
+        FLOAT(1, "float"),
+        STRING(2, "string"),
+        DATE(3, "date"),
+        BIGDECIMAL(4, "bigdecimal"),
+        DOUBLE(5, "double");
 
         private final int type;
         private final String description;
 
-        public static CellType getCellType(int val){
-            switch (val){
+        public static CellType getCellType(int val) {
+            switch (val) {
                 case 0:
                     return INT;
                 case 1:
@@ -64,8 +64,8 @@ public class ImportCell {
             }
         }
 
-        public static CellType getCellType(String str){
-            switch (str){
+        public static CellType getCellType(String str) {
+            switch (str) {
                 case "Int":
                     return INT;
                 case "Float":

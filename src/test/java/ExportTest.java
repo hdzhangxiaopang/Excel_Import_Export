@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class ExportTest {
 
-    public static void main(String[] args) throws FileNotFoundException,FileExportException{
+    public static void main(String[] args) throws FileNotFoundException, FileExportException {
         testExport();
     }
 
@@ -27,10 +27,11 @@ public class ExportTest {
         //OutputStream outputStream = new FileOutputStream("C://output.csv");
         exportResult.export(outputStream);
     }
-   public static List<Map> initData(){
+
+    public static List<Map> initData() {
         //map也可以换成一个实体类
         List<Map> lists = new LinkedList<>();
-        for(int i = 0;i< 10;i++){
+        for (int i = 0; i < 10; i++) {
             HashMap<String, Object> maps = new HashMap<>();
             maps.put("index", i);
             maps.put("date", new Date());

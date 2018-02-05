@@ -107,7 +107,7 @@ public class ExcelImport extends FileImport {
         if (EmptyUtil.isNotEmpty(cell)) {
             rawCellType = cell.getCellType();
         }
-        if (EmptyUtil.isEmpty(cell)|| rawCellType == Cell.CELL_TYPE_BLANK || (rawCellType == Cell.CELL_TYPE_STRING && StringUtils.isEmpty(cell.getStringCellValue()))) {
+        if (EmptyUtil.isEmpty(cell) || rawCellType == Cell.CELL_TYPE_BLANK || (rawCellType == Cell.CELL_TYPE_STRING && StringUtils.isEmpty(cell.getStringCellValue()))) {
             if (nullAble == ImportCell.NullAble.NUll_ALLOWED) {
                 maps.put(key, Optional.absent());
             } else {

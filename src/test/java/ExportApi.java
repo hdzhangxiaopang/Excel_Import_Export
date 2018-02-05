@@ -26,22 +26,22 @@ public class ExportApi {
     }
 
     private static List<Map> initData() {
-        List<Map> lists= new LinkedList<>();
+        List<Map> lists = new LinkedList<>();
         for (int i = 0; i < 10; i++) {
             HashMap<String, Object> map = new HashMap<>();
-            map.put("ID",UUID.randomUUID().toString().replace("-","").toLowerCase());
-            map.put("BACKEND_SYSTEM_ID",UUID.randomUUID().toString().replace("-","").toLowerCase());
-            map.put("NAME","API_00"+i);
-            map.put("DESCRIPTION","DESC");
-            map.put("PATH","/system_api");
-            map.put("METHOD","POST");
-            map.put("SCHEME",2);
-            map.put("SECURITY_SCHEME",2);
-            map.put("STATE",1);
-            map.put("LIMIT_COUNT",60);
-            map.put("LIMIT_TIME",80);
-            map.put("LIMIT_UNIT","SECONDS");
-            map.put("IS_DELETE",1);
+            map.put("ID", UUID.randomUUID().toString().replace("-", "").toLowerCase());
+            map.put("BACKEND_SYSTEM_ID", UUID.randomUUID().toString().replace("-", "").toLowerCase());
+            map.put("NAME", "API_00" + i);
+            map.put("DESCRIPTION", "DESC");
+            map.put("PATH", "/system_api");
+            map.put("METHOD", "POST");
+            map.put("SCHEME", 2);
+            map.put("SECURITY_SCHEME", 2);
+            map.put("STATE", 1);
+            map.put("LIMIT_COUNT", 60);
+            map.put("LIMIT_TIME", 80);
+            map.put("LIMIT_UNIT", "SECONDS");
+            map.put("IS_DELETE", 1);
             lists.add(map);
         }
         return lists;

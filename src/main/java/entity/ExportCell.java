@@ -17,12 +17,12 @@ public class ExportCell {
     private Export export; //是否导出
 
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
-    public enum Export{
+    public enum Export {
         NOT_EXPORT(0),
         EXPORT(1);
         private int value;
 
-        public static Export getExport(int value){
+        public static Export getExport(int value) {
             switch (value) {
                 case 0:
                     return NOT_EXPORT;

@@ -61,7 +61,7 @@ public class ExcelExport implements FileExport {
                     } catch (Exception e) {
                         throw new FileExportException("执行executeMethod  出错 Alias is " + exportCell.getAlias() + " at " + e.getMessage());
                     }
-                    setCellValue(obj,cell);
+                    setCellValue(obj, cell);
                 }
                 ++rowNum;
             }
@@ -85,7 +85,7 @@ public class ExcelExport implements FileExport {
                     ExportCell exportCell = exportCells.get(colNum);
                     Object obj = null;
                     obj = map.get(exportCell.getAlias());
-                    if(exportCell.getExport().equals(ExportCell.Export.EXPORT)){
+                    if (exportCell.getExport().equals(ExportCell.Export.EXPORT)) {
                         setCellValue(obj, cell);
                     }
 
@@ -144,7 +144,7 @@ public class ExcelExport implements FileExport {
         cellStyle.setFillBackgroundColor((short) 13);
         int i = 0;
         for (ExportCell exportCell : exportCells) {
-            sheet.setColumnWidth(i, exportCell.getWidth()!=null?Integer.valueOf(exportCell.getWidth()):3600);
+            sheet.setColumnWidth(i, exportCell.getWidth() != null ? Integer.valueOf(exportCell.getWidth()) : 3600);
             Cell cell = titleRow.createCell(i);
             cell.setCellValue(exportCell.getTitle());
             cell.setCellStyle(cellStyle);
@@ -154,8 +154,8 @@ public class ExcelExport implements FileExport {
 
     /**
      * 修改标题样式
-     * */
-    public static CellStyle createTitleCellStyle(Workbook workbook){
+     */
+    public static CellStyle createTitleCellStyle(Workbook workbook) {
         CellStyle cellStyle = workbook.createCellStyle();
         cellStyle.setAlignment(HorizontalAlignment.CENTER);
         return cellStyle;

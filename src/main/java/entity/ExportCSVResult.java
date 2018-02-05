@@ -36,7 +36,7 @@ public class ExportCSVResult extends ExportResult {
             /**
              * 解决中文乱码
              * */
-            outputStream.write(new   byte []{( byte ) 0xEF ,( byte ) 0xBB ,( byte ) 0xBF });
+            outputStream.write(new byte[]{(byte) 0xEF, (byte) 0xBB, (byte) 0xBF});
             outputStream.write(result.getBytes("UTF-8"));
             outputStream.close();
         } catch (IOException e) {

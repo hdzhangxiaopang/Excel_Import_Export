@@ -78,10 +78,12 @@ public class ExportConfigFactory {
             String titleText = "";
             String aliasText = "";
             String widthText = "";
+            String exportText = "";
             try {
                 titleText = ConfigParser.getNodeText(item, ExportTag.TITLE);
                 aliasText = ConfigParser.getNodeText(item, ExportTag.ALIAS);
                 widthText = ConfigParser.getNodeText(item, ExportTag.WIDTH);
+                exportText = ConfigParser.getNodeText(item,ExportTag.EXPORT);
             } catch (FileImportException e) {
                 throw new FileExportException(e);
             }
@@ -94,9 +96,24 @@ public class ExportConfigFactory {
             }
             exportCell.setAlias(aliasText);
             if(!StringUtils.isEmpty(widthText)){
+                if(!StringUtils.isNumeric(widthText)){
+                    throw new FileExportException(UtilConstants.EXPORT_XML_WIDTH_NOTNUMERIC);
+                }
                 exportCell.setWidth(widthText);
             }
-            exportCells.add(exportCell);
+            if(!StringUtils.isEmpty(exportText)){
+                if(!StringUtils.isNumeric(exportText)){
+                    throw new FileExportException(UtilConstants.EXPORT_XML_EXPORT_NOTNUMERIC);
+                }
+                exportCell.setExport(ExportCell.Export.getExport(Integer.valueOf(exportText)));
+            }
+            /**
+             * 判断是否导出该单元格项
+             * */
+            if(exportCell.getExport().equals(ExportCell.Export.EXPORT)){
+                exportCells.add(exportCell);
+            }
+
         }
         if (exportCells.isEmpty()) {
             throw new FileExportException(UtilConstants.EXPORT_XML_FILE_CONTENT_ISEMPTY);

@@ -53,4 +53,7 @@ public class UtilConstants {
 
     public static final String EXPORT_XML_PARSER_ERROR = "用于导出的xml文档解析错误";
 
+    public static final String EXPORT_XML_WIDTH_NOTNUMERIC = "用于导出的xml文档<width>不为数字";
+
+    public static final String EXPORT_XML_EXPORT_NOTNUMERIC = "用于导出的xml文档<export>不为数字";
 }

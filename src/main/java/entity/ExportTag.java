@@ -17,4 +17,6 @@ public class ExportTag {
     public static final String ALIAS = "alias";
 
     public static final String WIDTH = "width";
+
+    public static final String EXPORT = "export";
 }

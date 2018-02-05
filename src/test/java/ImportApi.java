@@ -14,18 +14,18 @@ import java.util.Map;
 /**
  * Created by zhangguilin on 2/5/2018.
  */
-public class Import_Api {
+public class ImportApi {
     public static void main(String[] args) throws FileImportException, URISyntaxException {
         importApi();
     }
 
     private static void importApi() throws FileImportException, URISyntaxException {
         ConfigParser configParser = ConfigurationParserFactory.getConfigParser(ImportConfig.ParserType.XML);
-        URI uri = Import_Api.class.getResource("/import/import_api.xlsx").toURI();
+        URI uri = ImportApi.class.getResource("/import/import_api.xlsx").toURI();
         File importFile = new File(uri);
         ImportConfig importConfig = null;
         try {
-            importConfig = configParser.getConfig(ImportTest.class.getResourceAsStream("/import/import_api.xml"));
+            importConfig = configParser.getConfig(ImportApi.class.getResourceAsStream("/import/import_api.xml"));
             MapResult mapResult = (MapResult) FileImportExecutor.importFile(importConfig, importFile, importFile.getName());
             List<Map> maps = mapResult.getResult();
             for (Map<String, Object> map : maps) {

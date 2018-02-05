@@ -79,7 +79,7 @@ public class XmlConfigParser extends ConfigParser {
     }
 
     /**
-     * 初始化导入数据模板--> import_config.xml
+     * 初始化导入数据模板--> import_xxx.xml
      */
     @Override
     public ImportConfig getConfig(InputStream configStream) throws FileImportException {

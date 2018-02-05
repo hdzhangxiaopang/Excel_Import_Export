@@ -85,7 +85,10 @@ public class ExcelExport implements FileExport {
                     ExportCell exportCell = exportCells.get(colNum);
                     Object obj = null;
                     obj = map.get(exportCell.getAlias());
-                    setCellValue(obj, cell);
+                    if(exportCell.getExport().equals(ExportCell.Export.EXPORT)){
+                        setCellValue(obj, cell);
+                    }
+
                 }
                 ++rowNum;
             }

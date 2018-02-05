@@ -1,3 +1,4 @@
+import entity.API;
 import entity.FileExport;
 import entity.ExportConfig;
 import entity.ExportResult;
@@ -26,7 +27,7 @@ public class ExportTest {
         //OutputStream outputStream = new FileOutputStream("C://output.csv");
         exportResult.export(outputStream);
     }
-    public static List<Map> initData(){
+   public static List<Map> initData(){
         //map也可以换成一个实体类
         List<Map> lists = new LinkedList<>();
         for(int i = 0;i< 10;i++){
@@ -40,4 +41,5 @@ public class ExportTest {
         }
         return lists;
     }
+
 }

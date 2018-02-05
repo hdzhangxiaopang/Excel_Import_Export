@@ -29,7 +29,7 @@ public class ImportTest {
         try {
             configuration = configParser.getConfig(ImportTest.class.getResourceAsStream("import/import_config.xml"));
             MapResult mapResult = (MapResult) FileImportExecutor.importFile(configuration, importFile, importFile.getName());
-            List<Map> maps = mapResult.gerResult();
+            List<Map> maps = mapResult.getResult();
             for (Map<String, Object> map : maps) {
                 int index = (int) map.get("index");
                 float f1 = (float) map.get("float");

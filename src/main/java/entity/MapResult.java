@@ -12,7 +12,7 @@ public class MapResult<Map> extends ImportResult{
     List<Map> result;
 
     @Override
-    public List<Map> gerResult() {
+    public List<Map> getResult() {
         return result;
     }
     public void setResult(List<Map> result) {

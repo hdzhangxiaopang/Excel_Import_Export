@@ -77,9 +77,11 @@ public class ExportConfigFactory {
             Element item = (Element) elements.item(i);
             String titleText = "";
             String aliasText = "";
+            String widthText = "";
             try {
                 titleText = ConfigParser.getNodeText(item, ExportTag.TITLE);
                 aliasText = ConfigParser.getNodeText(item, ExportTag.ALIAS);
+                widthText = ConfigParser.getNodeText(item, ExportTag.WIDTH);
             } catch (FileImportException e) {
                 throw new FileExportException(e);
             }
@@ -91,6 +93,9 @@ public class ExportConfigFactory {
                 throw new FileExportException(UtilConstants.EXPORT_XML_ALIAS_ISEMPTY);
             }
             exportCell.setAlias(aliasText);
+            if(!StringUtils.isEmpty(widthText)){
+                exportCell.setWidth(widthText);
+            }
             exportCells.add(exportCell);
         }
         if (exportCells.isEmpty()) {

@@ -133,7 +133,7 @@ public class ExcelExport implements FileExport {
      * 设置标题行
      */
     private void createTitleRow(Workbook workbook, Row titleRow, List<ExportCell> exportCells, Sheet sheet) {
-        CellStyle cellStyle = createCellStyle(workbook);
+        CellStyle cellStyle = createTitleCellStyle(workbook);
         titleRow.setHeightInPoints(25.0F);
         Font font = workbook.createFont();
         font.setColor((short) 12);
@@ -141,12 +141,21 @@ public class ExcelExport implements FileExport {
         cellStyle.setFillBackgroundColor((short) 13);
         int i = 0;
         for (ExportCell exportCell : exportCells) {
-            sheet.setColumnWidth(i, 3200);
+            sheet.setColumnWidth(i, exportCell.getWidth()!=null?Integer.valueOf(exportCell.getWidth()):3600);
             Cell cell = titleRow.createCell(i);
             cell.setCellValue(exportCell.getTitle());
             cell.setCellStyle(cellStyle);
             ++i;
         }
+    }
+
+    /**
+     * 修改标题样式
+     * */
+    public static CellStyle createTitleCellStyle(Workbook workbook){
+        CellStyle cellStyle = workbook.createCellStyle();
+        cellStyle.setAlignment(HorizontalAlignment.CENTER);
+        return cellStyle;
     }
 
     /**

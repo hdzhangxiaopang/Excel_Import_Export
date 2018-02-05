@@ -22,8 +22,8 @@ public class Export_Api {
     private static void exportApi() throws FileExportException, FileNotFoundException {
         ExportConfig exportConfig = ExportConfigFactory.getExportConfig(ExportTest.class.getResourceAsStream("export/export_api.xml"));
         ExportResult exportResult = FileExport.getExportResult(exportConfig, initData());
-        //FileOutputStream fileOutputStream = new FileOutputStream("C://export_api.xlsx");
-        FileOutputStream fileOutputStream = new FileOutputStream("C://export_api.csv");
+        FileOutputStream fileOutputStream = new FileOutputStream("C://export_api.xlsx");
+        //FileOutputStream fileOutputStream = new FileOutputStream("C://export_api.csv");
         exportResult.export(fileOutputStream);
     }
 

@@ -11,5 +11,6 @@ public class ExportCell {
     private String name;
     private String title; //导出标题中文
     private String alias; //对应的别名
+    private String width; //单元格的宽度
 
 }

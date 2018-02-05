@@ -1,41 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <exportFile>
     <fileName>exportConfig</fileName>
-    <exportType>1</exportType>
+    <exportType>0</exportType>
     <cell>
         <title>名称</title>
         <alias>NAME</alias>
+        <width>3200</width>
     </cell>
     <cell>
         <title>描述</title>
         <alias>DESCRIPTION</alias>
+        <width>6400</width>
     </cell>
     <cell>
         <title>请求方式</title>
         <alias>METHOD</alias>
+        <width>3000</width>
     </cell>
     <cell>
         <title>路径</title>
         <alias>PATH</alias>
+        <width>5000</width>
     </cell>
     <cell>
         <title>模式</title>
         <alias>SCHEME</alias>
+        <width>3000</width>
     </cell>
     <cell>
         <title>安全模式</title>
         <alias>SECURITY_SCHEME</alias>
+        <width>3000</width>
     </cell>
     <cell>
         <title>限流次数</title>
         <alias>LIMIT_COUNT</alias>
+        <width>3000</width>
     </cell>
     <cell>
         <title>限流时间</title>
         <alias>LIMIT_TIME</alias>
+        <width>3000</width>
     </cell>
     <cell>
         <title>限流单位</title>
         <alias>LIMIT_UNIT</alias>
+        <width>3000</width>
     </cell>
 </exportFile>

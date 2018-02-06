@@ -1,14 +1,8 @@
-import entity.Api;
-import entity.ExportConfig;
-import entity.ExportResult;
-import entity.FileExport;
+import entity.*;
 import exception.FileExportException;
 import factory.ExportConfigFactory;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -26,7 +20,7 @@ public class ExportApi {
         //FileOutputStream fileOutputStream = new FileOutputStream("C://export_api.csv");
         exportResult.export(fileOutputStream);
     }
-    /*
+
     private static List<Map> initData() {
         List<Map> lists = new LinkedList<>();
         for (int i = 0; i < 10; i++) {
@@ -47,9 +41,9 @@ public class ExportApi {
             lists.add(map);
         }
         return lists;
-    } */
+    }
 
-
+    /*
     private static List<Api> initData() {
         List<Api> lists = new LinkedList<>();
         for (int i = 0; i < 10; i++) {
@@ -70,14 +64,7 @@ public class ExportApi {
             lists.add(api);
         }
         return lists;
-    }
-
-    /**
-     * web下载
-     */
-    private void testExportInDownload() {
-
-    }
+    }*/
 
 
 }

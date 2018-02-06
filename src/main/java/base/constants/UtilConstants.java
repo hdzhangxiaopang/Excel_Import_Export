@@ -9,6 +9,8 @@ public class UtilConstants {
 
     public static final String PARSER_TYPE_ISEMPTY = "parserType is null";
 
+    public static final String DATA_TYPE_ERROR = "data type error !  obj is ";
+
     public static final String EXPORT_CSV_FILE_ERROR = "Error occurred while export csv msg is ";
 
     public static final String EXPORT_EXCEL_FILE_ERROR = "Error occurred while export excel msg is ";

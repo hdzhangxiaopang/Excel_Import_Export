@@ -16,10 +16,6 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <!-- parse excel api -->
         <dependency>
             <groupId>org.apache.poi</groupId>

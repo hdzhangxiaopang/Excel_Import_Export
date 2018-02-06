@@ -8,13 +8,13 @@
         <title>API_ID</title>
         <alias>ID</alias>
         <width>8500</width>
-        <export>0</export>
+        <export>1</export>
     </cell>
     <cell>
         <title>BACKEND_SYSTEM_ID</title>
         <alias>BACKEND_SYSTEM_ID</alias>
         <width>8500</width>
-        <export>0</export>
+        <export>1</export>
     </cell>
     <cell>
         <title>名称</title>
@@ -53,6 +53,12 @@
         <export>1</export>
     </cell>
     <cell>
+        <title>是否生效</title>
+        <alias>STATE</alias>
+        <width>3000</width>
+        <export>1</export>
+    </cell>
+    <cell>
         <title>限流次数</title>
         <alias>LIMIT_COUNT</alias>
         <width>3000</width>
@@ -74,6 +80,6 @@
         <title>是否删除</title>
         <alias>IS_DELETE</alias>
         <width>3000</width>
-        <export>0</export>
+        <export>1</export>
     </cell>
 </exportFile>

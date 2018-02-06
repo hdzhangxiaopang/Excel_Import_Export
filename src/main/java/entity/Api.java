@@ -6,7 +6,7 @@ import lombok.Data;
  * Created by zhangguilin on 2/5/2018.
  */
 @Data
-public class API {
+public class Api {
     private String ID;
     private String BACKEND_SYSTEM_ID;
     private String NAME;

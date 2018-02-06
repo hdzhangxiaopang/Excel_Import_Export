@@ -1,9 +1,12 @@
 package service.impl;
 
+import base.constants.UtilConstants;
 import base.util.DateUtil;
 import base.util.EmptyUtil;
+import base.util.ExportUtil;
 import base.util.ReflectionUtils;
 import entity.ExportCell;
+import entity.Type;
 import exception.FileExportException;
 import service.FileExport;
 import org.apache.commons.collections4.CollectionUtils;
@@ -31,7 +34,7 @@ public class CSVExport implements FileExport {
                     createContentRowsByBean((List<Object>) data, exportCells, stringBuilder);
                 }
             } else {
-                throw new FileExportException("传入的data数据格式有误，请检查是否属于list");
+                throw new FileExportException(UtilConstants.EXPORT_FILE_TYPE_NOTLIST);
             }
         }
         return stringBuilder;
@@ -51,7 +54,7 @@ public class CSVExport implements FileExport {
                 } catch (Exception e) {
                     throw new FileExportException("执行executeMethod  出错 Alias is " + exportCell.getAlias() + " at " + e);
                 }
-                setValue(obj, stringBuilder);
+                ExportUtil.setValue(obj, stringBuilder);
                 if (colNum != colLen - 1) {
                     stringBuilder.append(",");
                 } else {
@@ -71,7 +74,7 @@ public class CSVExport implements FileExport {
                 ExportCell exportCell = exportCells.get(colNum);
                 Object obj = null;
                 obj = map.get(exportCell.getAlias());
-                setValue(obj, stringBuilder);
+                ExportUtil.setValue(obj, stringBuilder);
                 if (colNum != colLen - 1) {
                     stringBuilder.append(",");
                 } else {
@@ -79,45 +82,6 @@ public class CSVExport implements FileExport {
                 }
             }
         }
-    }
-
-
-    /**
-     * 设置值
-     */
-    private void setValue(Object obj, StringBuilder stringBuilder) throws FileExportException {
-        if (EmptyUtil.isNotEmpty(obj)) {
-            BigDecimal bigDecimal = null;
-            String classType = obj.getClass().getName();
-            if (classType.endsWith("String"))
-                stringBuilder.append((String) obj);
-            else if (("int".equals(classType)) || (classType.equals("java.lang.Integer")))
-                stringBuilder.append(((Integer) obj).intValue());
-            else if (("double".equals(classType)) || (classType.equals("java.lang.Double"))) {
-                bigDecimal = new BigDecimal(((Double) obj).doubleValue());
-                stringBuilder.append(bigDecimal.doubleValue());
-            } else if (("float".equals(classType)) || (classType.equals("java.lang.Float"))) {
-                bigDecimal = new BigDecimal(((Float) obj).floatValue());
-                stringBuilder.append(bigDecimal.doubleValue());
-            } else if ((classType.equals("java.util.Date")) || (classType.endsWith("Date")))
-                stringBuilder.append(DateUtil.dataToString((Date) obj, DateUtil.YYYYMMDDHHMMSS));
-            else if (classType.equals("java.util.Calendar"))
-                stringBuilder.append((Calendar) obj);
-            else if (("char".equals(classType)) || (classType.equals("java.lang.Character")))
-                stringBuilder.append(obj.toString());
-            else if (("long".equals(classType)) || (classType.equals("java.lang.Long")))
-                stringBuilder.append(((Long) obj).longValue());
-            else if (("short".equals(classType)) || (classType.equals("java.lang.Short")))
-                stringBuilder.append(((Short) obj).shortValue());
-            else if (classType.equals("java.math.BigDecimal")) {
-                bigDecimal = (BigDecimal) obj;
-                bigDecimal = new BigDecimal(bigDecimal.intValue());
-                stringBuilder.append(bigDecimal.intValue());
-            } else {
-                throw new FileExportException("data type error !  obj is " + obj);
-            }
-        }
-
     }
 
     /**

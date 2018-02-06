@@ -13,6 +13,8 @@ public class UtilConstants {
 
     public static final String EXPORT_EXCEL_FILE_ERROR = "Error occurred while export excel msg is ";
 
+    public static final String EXPORT_FILE_TYPE_NOTLIST = "传入的data数据格式有误，请检查是否属于list";
+
     /**
      * 导入部分异常常量
      */
@@ -56,4 +58,5 @@ public class UtilConstants {
     public static final String EXPORT_XML_WIDTH_NOTNUMERIC = "用于导出的xml文档<width>不为数字";
 
     public static final String EXPORT_XML_EXPORT_NOTNUMERIC = "用于导出的xml文档<export>不为数字";
+
 }

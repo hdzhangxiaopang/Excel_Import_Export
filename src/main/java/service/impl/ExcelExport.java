@@ -1,8 +1,10 @@
 package service.impl;
 
 import base.util.EmptyUtil;
+import base.util.ExportUtil;
 import base.util.ReflectionUtils;
 import entity.ExportCell;
+import entity.Type;
 import exception.FileExportException;
 
 import org.apache.commons.collections4.CollectionUtils;
@@ -61,7 +63,7 @@ public class ExcelExport implements FileExport {
                     } catch (Exception e) {
                         throw new FileExportException("执行executeMethod  出错 Alias is " + exportCell.getAlias() + " at " + e.getMessage());
                     }
-                    setCellValue(obj, cell);
+                    ExportUtil.setCellValue(obj, cell);
                 }
                 ++rowNum;
             }
@@ -86,7 +88,7 @@ public class ExcelExport implements FileExport {
                     Object obj = null;
                     obj = map.get(exportCell.getAlias());
                     if (exportCell.getExport().equals(ExportCell.Export.EXPORT)) {
-                        setCellValue(obj, cell);
+                        ExportUtil.setCellValue(obj, cell);
                     }
 
                 }
@@ -95,42 +97,6 @@ public class ExcelExport implements FileExport {
         }
     }
 
-    /**
-     * 填充数据
-     */
-    private static void setCellValue(Object obj, Cell cell) throws FileExportException {
-        if (EmptyUtil.isNotEmpty(obj)) {
-            BigDecimal bigDecimal = null;
-            String classType = obj.getClass().getName();
-            if (classType.endsWith("String")) {
-                cell.setCellValue((String) obj);
-            } else if (("int".equals(classType)) || (classType.equals("java.lang.Integer")))
-                cell.setCellValue(((Integer) obj).intValue());
-            else if (("double".equals(classType)) || (classType.equals("java.lang.Double"))) {
-                bigDecimal = new BigDecimal(((Double) obj).doubleValue());
-                cell.setCellValue(bigDecimal.doubleValue());
-            } else if (("float".equals(classType)) || (classType.equals("java.lang.Float"))) {
-                bigDecimal = new BigDecimal(((Float) obj).floatValue());
-                cell.setCellValue(bigDecimal.doubleValue());
-            } else if ((classType.equals("java.util.Date")) || (classType.endsWith("Date")))
-                cell.setCellValue(base.util.DateUtil.dataToString((Date) obj, base.util.DateUtil.YYYYMMDDHHMMSS));
-            else if (classType.equals("java.util.Calendar"))
-                cell.setCellValue((Calendar) obj);
-            else if (("char".equals(classType)) || (classType.equals("java.lang.Character")))
-                cell.setCellValue(obj.toString());
-            else if (("long".equals(classType)) || (classType.equals("java.lang.Long")))
-                cell.setCellValue(((Long) obj).longValue());
-            else if (("short".equals(classType)) || (classType.equals("java.lang.Short")))
-                cell.setCellValue(((Short) obj).shortValue());
-            else if (classType.equals("java.math.BigDecimal")) {
-                bigDecimal = (BigDecimal) obj;
-                bigDecimal = new BigDecimal(bigDecimal.doubleValue());
-                cell.setCellValue(bigDecimal.doubleValue());
-            } else {
-                throw new FileExportException("data type error !  obj is " + obj);
-            }
-        }
-    }
 
     /**
      * 设置标题行

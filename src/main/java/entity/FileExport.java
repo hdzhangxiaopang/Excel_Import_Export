@@ -1,15 +1,10 @@
 package entity;
 
 import base.constants.UtilConstants;
-import entity.ExportConfig;
-import entity.ExportResult;
-import entity.ExportType;
-import entity.ExportCSVResult;
-import entity.ExportExcelResult;
 import exception.FileExportException;
+import org.apache.poi.ss.usermodel.Workbook;
 import service.impl.CSVExport;
 import service.impl.ExcelExport;
-import org.apache.poi.ss.usermodel.Workbook;
 
 import java.util.List;
 
@@ -17,7 +12,6 @@ import java.util.List;
  * Created by zhangguilin on 1/31/2018.
  */
 public class FileExport {
-    public final static String EXPORT_XML_BASE_PATH = "/properties/framework/export/";
 
     /**
      * 通过List<T> T可为bean或者Map<String,Object> 导出文件

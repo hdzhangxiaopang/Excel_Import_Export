@@ -13,7 +13,7 @@ import java.io.InputStream;
  */
 public abstract class ConfigParser {
 
-    abstract public ImportConfig getConfig(InputStream inputStream) throws FileImportException;
+    public abstract ImportConfig getConfig(InputStream inputStream) throws FileImportException;
 
     /**
      * 根据标签名称获取标签值

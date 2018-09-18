@@ -9,6 +9,7 @@ import java.util.List;
  */
 @Data
 public abstract class ImportResult<E> {
+
     public abstract List<E> getResult();
 
     private String resMsg; //返回信息

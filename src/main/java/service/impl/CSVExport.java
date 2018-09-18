@@ -1,19 +1,13 @@
 package service.impl;
 
 import base.constants.UtilConstants;
-import base.util.DateUtil;
-import base.util.EmptyUtil;
 import base.util.ExportUtil;
 import base.util.ReflectionUtils;
 import entity.ExportCell;
-import entity.Type;
 import exception.FileExportException;
 import service.FileExport;
 import org.apache.commons.collections4.CollectionUtils;
 
-import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -50,7 +44,7 @@ public class CSVExport implements FileExport {
                 ExportCell exportCell = exportCells.get(colNum);
                 Object obj = null;
                 try {
-                    obj = ReflectionUtils.excuteMethod(o, ReflectionUtils.returnGetMethodName(exportCell.getAlias()));
+                    obj = ReflectionUtils.executeMethod(o, ReflectionUtils.returnGetMethodName(exportCell.getAlias()));
                 } catch (Exception e) {
                     throw new FileExportException("执行executeMethod  出错 Alias is " + exportCell.getAlias() + " at " + e);
                 }

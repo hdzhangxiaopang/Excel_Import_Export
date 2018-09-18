@@ -2,6 +2,9 @@ package base.entity;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
+import java.lang.reflect.Field;
 
 /**
  * Created by zhangguilin on 1/31/2018.
@@ -15,17 +18,18 @@ public class BaseModel {
      *
      * 缺陷：安全性问题，反射私有属性值也会暴露
      * 改进：利用ToStringBuilder的子类ReflectionToStringBuilder，覆盖其accept方法进行筛选。
-     *
      * */
-   /* @Override
+    @Override
     public String toString(){
         return(new ReflectionToStringBuilder(this){
+            @Override
             protected boolean accept(Field field){
                 return super.accept(field) && !field.getName().equals("password");
             }
         }).toString();
+
         //return ToStringBuilder.reflectionToString(this);
-    }*/
+    }
 
     /**
      * 如果hashCode取决于该class的所有field时需要使用反射机制产生一个hashCode

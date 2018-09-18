@@ -108,7 +108,7 @@ public class ExcelImport extends FileImport {
             rawCellType = cell.getCellType();
         }
         if (EmptyUtil.isEmpty(cell) || rawCellType == Cell.CELL_TYPE_BLANK || (rawCellType == Cell.CELL_TYPE_STRING && StringUtils.isEmpty(cell.getStringCellValue()))) {
-            if (nullAble == ImportCell.NullAble.NUll_ALLOWED) {
+            if (nullAble == ImportCell.NullAble.NULL_ALLOWED) {
                 maps.put(key, Optional.absent());
             } else {
                 errMsg = String.format("line:%d,column:%d is null,but null is not allowed by setting \n", showLine, showColumn);

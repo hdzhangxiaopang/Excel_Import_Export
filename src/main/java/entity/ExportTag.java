@@ -4,7 +4,7 @@ package entity;
  * Created by zhangguilin on 2/2/2018.
  */
 
-public class ExportTag {
+public final class ExportTag {
 
     public static final String FILENAME = "fileName";
 

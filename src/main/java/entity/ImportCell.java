@@ -17,18 +17,18 @@ public class ImportCell {
 
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public enum NullAble {
-        NUll_ALLOWED(0),
+        NULL_ALLOWED(0),
         NULL_NOT_ALLOWED(1);
         private final int val;
 
         public static NullAble getNullAble(int val) {
             switch (val) {
                 case 0:
-                    return NUll_ALLOWED;
+                    return NULL_ALLOWED;
                 case 1:
                     return NULL_NOT_ALLOWED;
                 default:
-                    return NUll_ALLOWED;
+                    return NULL_ALLOWED;
             }
         }
     }

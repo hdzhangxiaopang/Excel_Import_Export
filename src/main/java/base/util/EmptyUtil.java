@@ -1,5 +1,7 @@
 package base.util;
 
+import org.apache.commons.collections4.CollectionUtils;
+
 import java.util.List;
 
 /**
@@ -13,7 +15,7 @@ public class EmptyUtil {
             return true;
         }
         if ((obj instanceof List)) {
-            return ((List) obj).size() == 0;
+            return CollectionUtils.isEmpty((List)obj);
         }
         if ((obj instanceof String)) {
             return ((String) obj).trim().equals("");

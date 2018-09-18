@@ -1,10 +1,8 @@
 package service.impl;
 
-import base.util.EmptyUtil;
 import base.util.ExportUtil;
 import base.util.ReflectionUtils;
 import entity.ExportCell;
-import entity.Type;
 import exception.FileExportException;
 
 import org.apache.commons.collections4.CollectionUtils;
@@ -12,9 +10,6 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import service.FileExport;
 
-import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -31,13 +26,11 @@ public class ExcelExport implements FileExport {
         /**
          * 判断data.getClass() 是不是 List.class.isAssignableFrom的子类或子接口
          * */
-        if (List.class.isAssignableFrom(data.getClass())) {
-            if (CollectionUtils.isNotEmpty(data)) {
-                if (data.get(0) instanceof Map) {
-                    createContentRowsByMap(workbook, (List<Map>) data, exportCells, sheet);
-                } else if (data.get(0) instanceof Object) {
-                    createContentRowsByBean(workbook, (List<Object>) data, exportCells, sheet);
-                }
+        if (List.class.isAssignableFrom(data.getClass()) && CollectionUtils.isNotEmpty(data)) {
+            if (data.get(0) instanceof Map) {
+                createContentRowsByMap(workbook, (List<Map>) data, exportCells, sheet);
+            } else if (data.get(0) instanceof Object) {
+                createContentRowsByBean(workbook, (List<Object>) data, exportCells, sheet);
             }
         }
         return workbook;
@@ -59,7 +52,7 @@ public class ExcelExport implements FileExport {
                     ExportCell exportCell = exportCells.get(colNum);
                     Object obj = null;
                     try {
-                        obj = ReflectionUtils.excuteMethod(o, ReflectionUtils.returnGetMethodName(exportCell.getAlias()));
+                        obj = ReflectionUtils.executeMethod(o, ReflectionUtils.returnGetMethodName(exportCell.getAlias()));
                     } catch (Exception e) {
                         throw new FileExportException("执行executeMethod  出错 Alias is " + exportCell.getAlias() + " at " + e.getMessage());
                     }
@@ -131,7 +124,6 @@ public class ExcelExport implements FileExport {
      * 修改正文样式
      */
     private static CellStyle createCellStyle(Workbook workbook) {
-        CellStyle cellStyle = workbook.createCellStyle();
-        return cellStyle;
+        return workbook.createCellStyle();
     }
 }

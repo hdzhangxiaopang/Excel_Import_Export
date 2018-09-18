@@ -6,79 +6,79 @@
     <!--title导出展示的列title名,alias对应别名，映射的字段名,width对应列的宽度,export表示是否导出0不导出、1导出、默认为导出-->
     <cell>
         <title>API_ID</title>
-        <alias>ID</alias>
+        <alias>id</alias>
         <width>8500</width>
         <export>1</export>
     </cell>
     <cell>
         <title>BACKEND_SYSTEM_ID</title>
-        <alias>BACKEND_SYSTEM_ID</alias>
+        <alias>backendSystemId</alias>
         <width>8500</width>
         <export>1</export>
     </cell>
     <cell>
         <title>名称</title>
-        <alias>NAME</alias>
+        <alias>name</alias>
         <width>4500</width>
         <export>1</export>
     </cell>
     <cell>
         <title>描述</title>
-        <alias>DESCRIPTION</alias>
+        <alias>description</alias>
         <width>6500</width>
         <export>1</export>
     </cell>
     <cell>
         <title>请求方式</title>
-        <alias>METHOD</alias>
+        <alias>method</alias>
         <width>2500</width>
         <export>1</export>
     </cell>
     <cell>
         <title>路径</title>
-        <alias>PATH</alias>
+        <alias>path</alias>
         <width>6000</width>
         <export>1</export>
     </cell>
     <cell>
         <title>模式</title>
-        <alias>SCHEME</alias>
+        <alias>scheme</alias>
         <width>3000</width>
         <export>1</export>
     </cell>
     <cell>
         <title>安全模式</title>
-        <alias>SECURITY_SCHEME</alias>
+        <alias>securityScheme</alias>
         <width>3000</width>
         <export>1</export>
     </cell>
     <cell>
         <title>是否生效</title>
-        <alias>STATE</alias>
+        <alias>state</alias>
         <width>3000</width>
         <export>1</export>
     </cell>
     <cell>
         <title>限流次数</title>
-        <alias>LIMIT_COUNT</alias>
+        <alias>limitCount</alias>
         <width>3000</width>
         <export>1</export>
     </cell>
     <cell>
         <title>限流时间</title>
-        <alias>LIMIT_TIME</alias>
+        <alias>limitTime</alias>
         <width>3000</width>
         <export>1</export>
     </cell>
     <cell>
         <title>限流单位</title>
-        <alias>LIMIT_UNIT</alias>
+        <alias>limitUnit</alias>
         <width>3000</width>
         <export>1</export>
     </cell>
     <cell>
         <title>是否删除</title>
-        <alias>IS_DELETE</alias>
+        <alias>isDelete</alias>
         <width>3000</width>
         <export>1</export>
     </cell>

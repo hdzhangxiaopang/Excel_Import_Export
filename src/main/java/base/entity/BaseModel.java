@@ -15,15 +15,15 @@ public class BaseModel {
      * 使用Apache Commons lang 自动化实现toString，避免使用Object类手写toString 方法太繁琐，属性修改后修改麻烦。
      * 使用 ToStringBuilder.reflectionToString() 代码简洁，无需任何配置。
      * Model属性变化，无需修改配置
-     *
+     * <p>
      * 缺陷：安全性问题，反射私有属性值也会暴露
      * 改进：利用ToStringBuilder的子类ReflectionToStringBuilder，覆盖其accept方法进行筛选。
-     * */
+     */
     @Override
-    public String toString(){
-        return(new ReflectionToStringBuilder(this){
+    public String toString() {
+        return (new ReflectionToStringBuilder(this) {
             @Override
-            protected boolean accept(Field field){
+            protected boolean accept(Field field) {
                 return super.accept(field) && !field.getName().equals("password");
             }
         }).toString();

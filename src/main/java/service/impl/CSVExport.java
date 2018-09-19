@@ -3,7 +3,10 @@ package service.impl;
 import base.constants.UtilConstants;
 import base.util.ExportUtil;
 import base.util.ReflectionUtils;
+import entity.ExportCSVResult;
 import entity.ExportCell;
+import entity.ExportConfig;
+import entity.ExportResult;
 import exception.FileExportException;
 import service.FileExport;
 import org.apache.commons.collections4.CollectionUtils;
@@ -17,7 +20,9 @@ import java.util.Map;
 public class CSVExport implements FileExport {
 
     @Override
-    public StringBuilder getExportResult(List<?> data, List<ExportCell> exportCells) throws FileExportException {
+    public ExportResult getExportResult(ExportConfig exportConfig, List<?> data) throws FileExportException {
+        List<ExportCell> exportCells = exportConfig.getExportCells();
+        ExportCSVResult exportCSVResult = new ExportCSVResult();
         StringBuilder stringBuilder = new StringBuilder();
         createTitles(exportCells, stringBuilder);
         if (CollectionUtils.isNotEmpty(data)) {
@@ -31,7 +36,9 @@ public class CSVExport implements FileExport {
                 throw new FileExportException(UtilConstants.EXPORT_FILE_TYPE_NOTLIST);
             }
         }
-        return stringBuilder;
+        exportCSVResult.setResult(stringBuilder.toString());
+        exportCSVResult.setFileName(exportConfig.getFileName());
+        return exportCSVResult;
     }
 
     /**

@@ -1,6 +1,8 @@
 import entity.*;
 import exception.FileExportException;
 import factory.ExportConfigFactory;
+import service.impl.CSVExport;
+import service.impl.ExcelExport;
 
 import java.io.*;
 import java.util.*;
@@ -14,11 +16,19 @@ public class ExportApi {
     }
 
     private static void exportApi() throws FileExportException, IOException {
+        //FileOutputStream fileOutputStream = new FileOutputStream("C://export_api.xlsx");
+        FileOutputStream fileOutputStream = new FileOutputStream("C://export_api.csv");
         ExportConfig exportConfig = ExportConfigFactory.getExportConfig(ExportApi.class.getResourceAsStream("export/export_api.xml"));
-        ExportResult exportResult = FileExport.getExportResult(exportConfig, initData());
-        FileOutputStream fileOutputStream = new FileOutputStream("C://export_api.xlsx");
-        //FileOutputStream fileOutputStream = new FileOutputStream("C://export_api.csv");
-        exportResult.export(fileOutputStream);
+        ExportType exportType = exportConfig.getExportType();
+        if (exportType.equals(ExportType.EXCEL_2007)) {
+            ExcelExport excelExport = new ExcelExport();
+            ExportResult exportResult = excelExport.getExportResult(exportConfig, initData());
+            exportResult.export(fileOutputStream);
+        } else if (exportType.equals(ExportType.CSV)) {
+            CSVExport csvExport = new CSVExport();
+            ExportResult exportResult = csvExport.getExportResult(exportConfig, initData());
+            exportResult.export(fileOutputStream);
+        }
     }
 
     private static List<Map> initData() {

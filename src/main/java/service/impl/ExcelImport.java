@@ -27,7 +27,7 @@ import java.util.Map;
 /**
  * Created by zhangguilin on 2/1/2018.
  */
-public class ExcelImport extends FileImport {
+public class ExcelImport implements FileImport {
 
     private ImportConfig importConfig;
 

@@ -1,7 +1,6 @@
 package factory;
 
 import base.constants.UtilConstants;
-import base.parser.ConfigParser;
 import base.util.EmptyUtil;
 import entity.ExportCell;
 import entity.ExportConfig;
@@ -22,6 +21,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import static base.util.NodeTextUtil.getNodeText;
 
 /**
  * Created by zhangguilin on 1/31/2018.
@@ -49,8 +50,8 @@ public class ExportConfigFactory {
         String fileName = "";
         String fileType = "";
         try {
-            fileName = ConfigParser.getNodeText(element, ExportTag.FILENAME);
-            fileType = ConfigParser.getNodeText(element, ExportTag.EXPORTTYPE);
+            fileName = getNodeText(element, ExportTag.FILENAME);
+            fileType = getNodeText(element, ExportTag.EXPORTTYPE);
         } catch (FileImportException e) {
             e.printStackTrace();
         }
@@ -80,10 +81,10 @@ public class ExportConfigFactory {
             String widthText = "";
             String exportText = "";
             try {
-                titleText = ConfigParser.getNodeText(item, ExportTag.TITLE);
-                aliasText = ConfigParser.getNodeText(item, ExportTag.ALIAS);
-                widthText = ConfigParser.getNodeText(item, ExportTag.WIDTH);
-                exportText = ConfigParser.getNodeText(item, ExportTag.EXPORT);
+                titleText = getNodeText(item, ExportTag.TITLE);
+                aliasText = getNodeText(item, ExportTag.ALIAS);
+                widthText = getNodeText(item, ExportTag.WIDTH);
+                exportText = getNodeText(item, ExportTag.EXPORT);
             } catch (FileImportException e) {
                 throw new FileExportException(e);
             }

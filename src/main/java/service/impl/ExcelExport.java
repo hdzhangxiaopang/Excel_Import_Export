@@ -3,6 +3,9 @@ package service.impl;
 import base.util.ExportUtil;
 import base.util.ReflectionUtils;
 import entity.ExportCell;
+import entity.ExportConfig;
+import entity.ExportExcelResult;
+import entity.ExportResult;
 import exception.FileExportException;
 
 import org.apache.commons.collections4.CollectionUtils;
@@ -18,7 +21,11 @@ import java.util.Map;
  */
 public class ExcelExport implements FileExport {
     @Override
-    public Workbook getExportResult(List<?> data, List<ExportCell> exportCells) throws FileExportException {
+    public ExportResult getExportResult(ExportConfig exportConfig, List<?> data) throws FileExportException {
+
+        List<ExportCell> exportCells = exportConfig.getExportCells();
+        ExportExcelResult exportExcelResult = new ExportExcelResult();
+
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet();
         Row titleRow = sheet.createRow(0);
@@ -33,7 +40,9 @@ public class ExcelExport implements FileExport {
                 createContentRowsByBean(workbook, (List<Object>) data, exportCells, sheet);
             }
         }
-        return workbook;
+        exportExcelResult.setWorkbook(workbook);
+        exportExcelResult.setFileName(exportConfig.getFileName());
+        return exportExcelResult;
     }
 
     /**

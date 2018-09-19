@@ -15,7 +15,7 @@ public class EmptyUtil {
             return true;
         }
         if ((obj instanceof List)) {
-            return CollectionUtils.isEmpty((List)obj);
+            return CollectionUtils.isEmpty((List) obj);
         }
         if ((obj instanceof String)) {
             return ((String) obj).trim().equals("");

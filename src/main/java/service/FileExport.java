@@ -1,6 +1,6 @@
 package service;
 
-import entity.ExportCell;
+import entity.ExportConfig;
 import exception.FileExportException;
 
 import java.util.List;
@@ -13,5 +13,5 @@ public interface FileExport {
     /**
      * 数据导出
      */
-    public Object getExportResult(List<?> data, List<ExportCell> exportCells) throws FileExportException;
+    Object getExportResult(ExportConfig exportConfig, List<?> data) throws FileExportException;
 }

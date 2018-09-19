@@ -19,11 +19,13 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static base.util.NodeTextUtil.getNodeText;
+
 
 /**
  * Created by zhangguilin on 2/1/2018.
  */
-public class XmlConfigParser extends ConfigParser {
+public class XmlConfigParser implements ConfigParser {
 
     /**
      * 初始化单元格
